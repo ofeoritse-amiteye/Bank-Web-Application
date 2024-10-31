@@ -74,90 +74,104 @@ export default function Dashboard() {
             </div>
         </div>
         
-        <div className='flex flex-grow bg-red-300 h-full'>
+        <div className='flex flex-grow h-full'>
             <div className='w-[283px]  shadow-md overflow-y-auto '>
                 <div className="py-2">
-                <a href="#" className="px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white flex items-center">Switch organization
-                  <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
-                  </svg>
-                </a>
+                  <a href="#" className="px-4 py-2 text-sm text-[#213F7D] hover:bg-[#39CDCC] hover:text-white flex items-center font-medium">
+                  <div className='mr-2'>
+                    <Image src={"/icons/briefcase.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                    Switch organization
+                    <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
+                    </svg>
+                  </a>
                 </div>
                 <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" data-modal-target='reg_modal' data-modal-toggle="reg_modal">Register user</a>
+                  <a href="#" className="flex items-center px-4 py-4 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">
+                  <div className='mr-2'>
+                    <Image src={"/icons/home.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                    Dashboard</a>
                 </div>
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" data-modal-target='add_product_modal' data-modal-toggle="add_product_modal">Add product</a>
+
+                <p className='text-sm px-4 text-[#545F7D] font-medium '>CUSTOMERS</p>
+
+                <div className="">
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">
+                  <div className='mr-2'>
+                    <Image src={"/icons/user-friends.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                    Users</a>
                 </div>
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" data-modal-target='login_modal' data-modal-toggle="login_modal">Log In</a>
+                <div className="">
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">
+                  <div className='mr-2'>
+                  <Image src={"/icons/users_1.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                  Guarantors</a>
                 </div>
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Log Out</a>
+                <div className="">
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">loans</a>
                 </div>
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" data-modal-target='reg_modal' data-modal-toggle="reg_modal">Register user</a>
+                <div className="">
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">Decision Models</a>
                 </div>
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" data-modal-target='add_product_modal' data-modal-toggle="add_product_modal">Add product</a>
+                <div className="">
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">savings</a>
                 </div>
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" data-modal-target='login_modal' data-modal-toggle="login_modal">Log In</a>
+                <div className="">
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">Loan requests</a>
                 </div>
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Log Out</a>
+                <div className="">
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">Whitelist</a>
                 </div>
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" data-modal-target='reg_modal' data-modal-toggle="reg_modal">Register user</a>
+                <div className="">
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Karma</a>
                 </div>
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Log Out</a>
+
+                <p className='text-sm px-4 mt-5 text-[#545F7D] font-medium'>BUSINESSES</p>
+
+                <div className="">
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Organization</a>
                 </div>
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" data-modal-target='reg_modal' data-modal-toggle="reg_modal">Register user</a>
+                <div className="">
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Loan Products</a>
                 </div>
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Log Out</a>
+                <div className="">
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Savings Products</a>
                 </div>
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" data-modal-target='reg_modal' data-modal-toggle="reg_modal">Register user</a>
-                </div> 
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" data-modal-target='reg_modal' data-modal-toggle="reg_modal">Register user</a>
+                <div className="">
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Fees and charges</a>
                 </div>
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Log Out</a>
+                <div className="">
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Transactions</a>
                 </div>
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" data-modal-target='reg_modal' data-modal-toggle="reg_modal">Register user</a>
-                </div> 
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" data-modal-target='reg_modal' data-modal-toggle="reg_modal">Register user</a>
+                <div className="">
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Services</a>
                 </div>
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Log Out</a>
+                <div className="">
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Service Account</a>
                 </div>
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" data-modal-target='reg_modal' data-modal-toggle="reg_modal">Register user</a>
-                </div> 
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" data-modal-target='reg_modal' data-modal-toggle="reg_modal">Register user</a>
+                <div className="">
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Settlements</a>
                 </div>
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Log Out</a>
+                <div className="">
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Reports</a>
                 </div>
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" data-modal-target='reg_modal' data-modal-toggle="reg_modal">Register user</a>
-                </div> 
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" data-modal-target='reg_modal' data-modal-toggle="reg_modal">Register user</a>
+
+                <p className='text-sm px-4 mt-5 text-[#545F7D] font-medium'>SETTINGS</p>
+                <div className="">
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Preferences</a>
                 </div>
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Log Out</a>
+                <div className="">
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Fees and Pricing</a>
                 </div>
-                <div className="py-2">
-                <a href="#" className="block px-4 py-2 text-sm text-[#213F7D] hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" data-modal-target='reg_modal' data-modal-toggle="reg_modal">Register user</a>
-                </div> 
+                <div className="">
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Audit Logs</a>
+                </div>
+
+
             </div>
             <div className='w-full h-full bg-[#FBFBFB]'>
 
