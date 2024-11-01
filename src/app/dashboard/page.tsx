@@ -28,6 +28,19 @@ export default function Dashboard() {
     fetchUsers();
   }, []);
 
+  const [selected, setSelected] = useState(null);
+
+  const handleSelect = (link:any) => {
+    setSelected(link);
+  };
+
+  const linkClass = (link:any) => `
+    flex items-center px-4 py-2 text-custom2 text-[#213F7D]
+    hover:bg-[#39CDCC] hover:bg-opacity-10 hover:text-[#213F7D]
+    hover:text-opacity-100 text-opacity-60 
+    ${selected === link ? 'border-l-4 border-[#39CDCC] bg-blue-50' : ''}
+  `;
+
   return (
     <div className="flex flex-col h-screen">
         <div className=' w-full shadow-sm flex sticky z-1000 top-0 bg-white'>
@@ -77,7 +90,7 @@ export default function Dashboard() {
         <div className='flex flex-grow h-full'>
             <div className='w-[283px]  shadow-md overflow-y-auto '>
                 <div className="py-2">
-                  <a href="#" className="px-4 py-2 text-sm text-[#213F7D] hover:bg-[#39CDCC] hover:text-white flex items-center font-medium">
+                  <a href="#" className="px-4 py-2 text-custom2 text-[#213F7D] hover:bg-[#39CDCC] hover:bg-opacity-10 hover:text-[#213F7D] flex items-center font-medium">
                   <div className='mr-2'>
                     <Image src={"/icons/briefcase.png"} alt='no image' height={10} width={15}/>
                   </div>
@@ -88,156 +101,156 @@ export default function Dashboard() {
                   </a>
                 </div>
                 <div className="py-2">
-                  <a href="#" className="flex items-center px-4 py-4 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">
+                  <a href="#" className="flex items-center px-4 py-4 text-custom2 text-[#213F7D] hover:bg-[#39CDCC] hover:bg-opacity-10 hover:text-[#213F7D] hover:text-opacity-100 text-opacity-60">
                   <div className='mr-2'>
                     <Image src={"/icons/home.png"} alt='no image' height={10} width={15}/>
                   </div>
                     Dashboard</a>
                 </div>
 
-                <p className='text-sm px-4 text-[#545F7D] font-medium '>CUSTOMERS</p>
+                <p className=' px-4 text-custom text-[#545F7D] font-medium '>CUSTOMERS</p>
 
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">
+                  <a href="#" className={linkClass("Users")} onClick={() => handleSelect("Users")} >
                   <div className='mr-2'>
                     <Image src={"/icons/user-friends.png"} alt='no image' height={10} width={15}/>
                   </div>
                     Users</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">
+                  <a href="#" className={linkClass("Guarantors")} onClick={() => handleSelect("Guarantors")}>
                   <div className='mr-2'>
                   <Image src={"/icons/users_1.png"} alt='no image' height={10} width={15}/>
                   </div>
                   Guarantors</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">
+                  <a href="#" className={linkClass("Loans")} onClick={() => handleSelect("Loans")}>
                   <div className='mr-2'>
                   <Image src={"/icons/sack.png"} alt='no image' height={10} width={15}/>
                   </div>
-                  loans</a>
+                  Loans</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">
+                  <a href="#" className={linkClass("Decision_Models")} onClick={() => handleSelect("Decision_Models")}>
                   <div className='mr-2'>
                   <Image src={"/icons/handshake-regular.png"} alt='no image' height={10} width={15}/>
                   </div>
                     Decision Models</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">
+                  <a href="#" className={linkClass("Savings")} onClick={() => handleSelect("Savings")}>
                   <div className='mr-2'>
                   <Image src={"/icons/piggy-bank.png"} alt='no image' height={10} width={15}/>
                   </div>
                     savings</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">
+                  <a href="#" className={linkClass("Loan_Requests")} onClick={() => handleSelect("Loan_Requests")}>
                   <div className='mr-2'>
                   <Image src={"/icons/group.png"} alt='no image' height={10} width={15}/>
                   </div>
-                    Loan requests</a>
+                    Loan Requests</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">
+                  <a href="#" className={linkClass("Whitelist")} onClick={() => handleSelect("Whitelist")}>
                   <div className='mr-2'>
                   <Image src={"/icons/user-check.png"} alt='no image' height={10} width={15}/>
                   </div>
                     Whitelist</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <a href="#" className={linkClass("Karma")} onClick={() => handleSelect("Karma")}>
                   <div className='mr-2'>
                   <Image src={"/icons/user-times.png"} alt='no image' height={10} width={15}/>
                   </div>
                     Karma</a>
                 </div>
 
-                <p className='text-sm px-4 mt-5 text-[#545F7D] font-medium'>BUSINESSES</p>
+                <p className='text-custom px-4 mt-5 text-[#545F7D] font-medium'>BUSINESSES</p>
 
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <a href="#" className={linkClass("Organization")} onClick={() => handleSelect("Organization")}>
                   <div className='mr-2'>
                   <Image src={"/icons/briefcase.png"} alt='no image' height={10} width={15}/>
                   </div>
                     Organization</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <a href="#" className={linkClass("Loan_Products")} onClick={() => handleSelect("Loan_Products")}>
                   <div className='mr-2'>
                   <Image src={"/icons/group.png"} alt='no image' height={10} width={15}/>
                   </div>
                     Loan Products</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <a href="#" className={linkClass("Savings_Products")} onClick={() => handleSelect("Savings_Products")}>
                   <div className='mr-2'>
                   <Image src={"/icons/group2.png"} alt='no image' height={10} width={15}/>
                   </div>
                     Savings Products</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <a href="#" className={linkClass("Fees_and_charges")} onClick={() => handleSelect("Fees_and_charges")}>
                   <div className='mr-2'>
                   <Image src={"/icons/coins-solid.png"} alt='no image' height={10} width={15}/>
                   </div>
                     Fees and charges</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <a href="#" className={linkClass("Transactions")} onClick={() => handleSelect("Transactions")}>
                   <div className='mr-2'>
                   <Image src={"/icons/icon.png"} alt='no image' height={10} width={15}/>
                   </div>
                     Transactions</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <a href="#" className={linkClass("Services")} onClick={() => handleSelect("Services")}>
                   <div className='mr-2'>
                   <Image src={"/icons/galaxy.png"} alt='no image' height={10} width={15}/>
                   </div>
                     Services</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <a href="#" className={linkClass("Service_Account")} onClick={() => handleSelect("Service_Account")}>
                   <div className='mr-2'>
                   <Image src={"/icons/user-cog.png"} alt='no image' height={10} width={15}/>
                   </div>
                     Service Account</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <a href="#" className={linkClass("Settlements")} onClick={() => handleSelect("Settlements")}>
                   <div className='mr-2'>
                   <Image src={"/icons/scroll.png"} alt='no image' height={10} width={15}/>
                   </div>
                     Settlements</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <a href="#" className={linkClass("Reports")} onClick={() => handleSelect("Reports")}>
                   <div className='mr-2'>
                   <Image src={"/icons/chart-bar.png"} alt='no image' height={10} width={15}/>
                   </div>
                     Reports</a>
                 </div>
 
-                <p className='text-sm px-4 mt-5 text-[#545F7D] font-medium'>SETTINGS</p>
+                <p className='text-custom px-4 mt-5 text-[#545F7D] font-medium'>SETTINGS</p>
 
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <a href="#" className={linkClass("Preferences")} onClick={() => handleSelect("Preferences")}>
                   <div className='mr-2'>
                   <Image src={"/icons/sliders-h.png"} alt='no image' height={10} width={15}/>
                   </div>
                     Preferences</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <a href="#" className={linkClass("Fees_and_Pricing")} onClick={() => handleSelect("Fees_and_Pricing")}>
                   <div className='mr-2'>
                   <Image src={"/icons/badge-percent.png"} alt='no image' height={10} width={15}/>
                   </div>
                     Fees and Pricing</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <a href="#" className={linkClass("Audit_Logs")} onClick={() => handleSelect("Audit_Logs")}>
                   <div className='mr-2'>
                   <Image src={"/icons/clipboard-list.png"} alt='no image' height={10} width={15}/>
                   </div>
