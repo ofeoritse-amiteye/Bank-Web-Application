@@ -17,7 +17,7 @@ export default function Dashboard() {
   useEffect(() => {
     async function fetchUsers() {
       try {
-        const response = await fetch('https://run.mocky.io/v3/c54147e3-4771-45a2-a3d2-8cac9f8fbc02');
+        const response = await fetch('https://run.mocky.io/v3/822d0f62-064c-4b2e-a789-0b77e8609c28');
         const data = await response.json();
         setUsers(data);
       } catch (error) {
@@ -29,6 +29,7 @@ export default function Dashboard() {
   }, []);
 
   const [selected, setSelected] = useState(null);
+  const [menuopen , setmenuopen] = useState(null)
 
   const handleSelect = (link:any) => {
     setSelected(link);
@@ -259,8 +260,106 @@ export default function Dashboard() {
 
 
             </div>
-            <div className='w-full h-full bg-[#FBFBFB]'>
+            <div className='w-full h-full bg-[#FBFBFB] flex justify-center'>
 
+              <div className='w-custom h-3/4 border-2 mt-10 '>
+              <p className='text-2xl font-bold text-[#213F7D]'>Users</p>
+
+              <div className='flex min-w-full mt-10 mb-10 justify-between overflow-x-auto'>
+                <div className='w-1/5 h-[170px] bg-white shadow-md rounded-md'>
+                  <div className='p-7'>
+                    <Image src={'/icons/icon2.png'} alt='no image' height={50} width={50}/>
+                    <p className=' text-[#213F7D] mt-3'>Users</p>
+                    <p className='text-2xl font-bold text-[#213F7D] mt-1'>2,453</p>
+                  </div>
+                </div>
+                <div className='w-1/5 h-[170px] bg-white shadow-md rounded-md'>
+                  <div className='p-7'>
+                    <Image src={'/icons/icon2.png'} alt='no image' height={50} width={50}/>
+                    <p className=' text-[#213F7D] mt-3'>Users</p>
+                    <p className='text-2xl font-bold text-[#213F7D] mt-1'>2,453</p>
+                  </div>
+                </div>
+                <div className='w-1/5 h-[170px] bg-white shadow-md rounded-md'>
+                  <div className='p-7'>
+                    <Image src={'/icons/icon2.png'} alt='no image' height={50} width={50}/>
+                    <p className=' text-[#213F7D] mt-3'>Users</p>
+                    <p className='text-2xl font-bold text-[#213F7D] mt-1'>2,453</p>
+                  </div>
+                </div>
+                <div className='w-1/5 h-[170px] bg-white shadow-md rounded-md'>
+                  <div className='p-7'>
+                    <Image src={'/icons/icon2.png'} alt='no image' height={50} width={50}/>
+                    <p className=' text-[#213F7D] mt-3'>Users</p>
+                    <p className='text-2xl font-bold text-[#213F7D] mt-1'>2,453</p>
+                  </div>
+                </div>   
+              </div>
+
+              <div className='w-full bg-white'>
+              <div className="overflow-x-auto">
+                  <table className="min-w-full bg-white border border-gray-200 rounded-lg">
+                    <thead>
+                      <tr className="text-left text-gray-600 font-semibold">
+                        <th className="px-4 py-2 border-b">ORGANIZATION</th>
+                        <th className="px-4 py-2 border-b">USERNAME</th>
+                        <th className="px-4 py-2 border-b">EMAIL</th>
+                        <th className="px-4 py-2 border-b">PHONE NUMBER</th>
+                        <th className="px-4 py-2 border-b">DATE JOINED</th>
+                        <th className="px-4 py-2 border-b">STATUS</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {users.map((user:any)=>(
+                      <tr key={user.id} className="hover:bg-gray-100">
+                      <td className="px-4 py-2 border-b">{user.organization}</td>
+                      <td className="px-4 py-2 border-b">{user.name}</td>
+                      <td className="px-4 py-2 border-b">{user.email}</td>
+                      <td className="px-4 py-2 border-b">{user.phone}</td>
+                      <td className="px-4 py-2 border-b">{user.date_joined}</td>
+                      <td className="px-4 py-2 border-b"><span className={`py-1 px-3 rounded-full text-xs ${user.status === "Active"? "bg-green-100 text-green-600": user.status === "Inactive"? "bg-gray-200 text-gray-600": "bg-red-100 text-red-600"}`}>{user.status}</span></td>
+                      <td className="px-4 py-2 border-b">
+                        <button
+                          onClick={() => setmenuopen(menuopen === user.id ? null : user.id)}
+                          className="absolute bottom-2 right-16 inline-flex items-center p-2 text-sm font-medium  bg-white rounded-full text-black"
+                          type="button"
+                        >
+                          <svg
+                            className="w-5 h-5"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor"
+                            viewBox="0 0 4 15"
+                          >
+                            <path d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
+                          </svg>
+                        </button>
+                      </td>
+
+                      </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  
+                  <div className="flex items-center justify-between mt-4">
+                    <div className="text-sm text-gray-600">
+                      Showing <select className="border border-gray-300 rounded-md px-2 py-1">
+                        <option>100</option>
+                        <option>50</option>
+                        <option>25</option>
+                      </select> out of 100
+                    </div>
+                    <div className="flex space-x-2">
+                      <button className="px-3 py-1 border border-gray-300 rounded">1</button>
+                      <button className="px-3 py-1 border border-gray-300 rounded">2</button>
+                      <button className="px-3 py-1 border border-gray-300 rounded">3</button>
+                      <span>...</span>
+                      <button className="px-3 py-1 border border-gray-300 rounded">16</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
             </div>
         </div>
     </div>

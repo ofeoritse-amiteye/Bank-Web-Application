@@ -9,6 +9,10 @@ module.exports = {
       {
         "custom":"12px",
         "custom2":"16px"
+      },
+      width:
+      {
+        "custom":"90%"
       }
     },
   },
