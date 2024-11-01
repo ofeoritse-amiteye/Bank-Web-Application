@@ -112,63 +112,136 @@ export default function Dashboard() {
                   Guarantors</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">loans</a>
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">
+                  <div className='mr-2'>
+                  <Image src={"/icons/sack.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                  loans</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">Decision Models</a>
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">
+                  <div className='mr-2'>
+                  <Image src={"/icons/handshake-regular.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                    Decision Models</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">savings</a>
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">
+                  <div className='mr-2'>
+                  <Image src={"/icons/piggy-bank.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                    savings</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">Loan requests</a>
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">
+                  <div className='mr-2'>
+                  <Image src={"/icons/group.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                    Loan requests</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">Whitelist</a>
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60">
+                  <div className='mr-2'>
+                  <Image src={"/icons/user-check.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                    Whitelist</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Karma</a>
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <div className='mr-2'>
+                  <Image src={"/icons/user-times.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                    Karma</a>
                 </div>
 
                 <p className='text-sm px-4 mt-5 text-[#545F7D] font-medium'>BUSINESSES</p>
 
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Organization</a>
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <div className='mr-2'>
+                  <Image src={"/icons/briefcase.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                    Organization</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Loan Products</a>
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <div className='mr-2'>
+                  <Image src={"/icons/group.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                    Loan Products</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Savings Products</a>
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <div className='mr-2'>
+                  <Image src={"/icons/group2.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                    Savings Products</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Fees and charges</a>
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <div className='mr-2'>
+                  <Image src={"/icons/coins-solid.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                    Fees and charges</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Transactions</a>
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <div className='mr-2'>
+                  <Image src={"/icons/icon.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                    Transactions</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Services</a>
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <div className='mr-2'>
+                  <Image src={"/icons/galaxy.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                    Services</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Service Account</a>
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <div className='mr-2'>
+                  <Image src={"/icons/user-cog.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                    Service Account</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Settlements</a>
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <div className='mr-2'>
+                  <Image src={"/icons/scroll.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                    Settlements</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Reports</a>
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <div className='mr-2'>
+                  <Image src={"/icons/chart-bar.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                    Reports</a>
                 </div>
 
                 <p className='text-sm px-4 mt-5 text-[#545F7D] font-medium'>SETTINGS</p>
+
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Preferences</a>
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <div className='mr-2'>
+                  <Image src={"/icons/sliders-h.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                    Preferences</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Fees and Pricing</a>
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <div className='mr-2'>
+                  <Image src={"/icons/badge-percent.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                    Fees and Pricing</a>
                 </div>
                 <div className="">
-                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">Audit Logs</a>
+                  <a href="#" className="flex items-center px-4 py-2 text-md text-[#213F7D] hover:bg-[#39CDCC] hover:text-white opacity-60 ">
+                  <div className='mr-2'>
+                  <Image src={"/icons/clipboard-list.png"} alt='no image' height={10} width={15}/>
+                  </div>
+                    Audit Logs</a>
                 </div>
 
 
