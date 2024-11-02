@@ -1,7 +1,7 @@
 "use client"
 import { useState } from 'react';
 import Image from 'next/image';
-import Sidebar, { Main_content ,Userdetails } from '@/components/dashboard_components';
+import Sidebar, { Main_content } from '@/components/dashboard_components';
 import { motion } from 'framer-motion';
 
 export default function Dashboard() {
@@ -79,11 +79,8 @@ export default function Dashboard() {
             {isSidebarOpen && (
           <div onClick={handleSidebarToggle} className="fixed inset-0 bg-black bg-opacity-30 lg:hidden z-40"></div>)}
 
-          {/*<div className='w-full h-full bg-[#FBFBFB] flex justify-center'>
-            <Main_content/>
-          </div>*/}
           <div className='w-full h-full bg-[#FBFBFB] flex justify-center'>
-            <Userdetails/>
+            <Main_content/>
           </div>
         </div>
     </div>
