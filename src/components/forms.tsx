@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-export default function Home() {
+export default function Loginform() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
@@ -66,3 +66,56 @@ export default function Home() {
     </div>
   );
 }
+
+export const Filterform = () =>
+{
+
+  return (
+    <div className="w-full max-w-md mx-auto p-4 bg-white border border-gray-200 rounded-lg shadow-md">
+      <form className="space-y-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Organization</label>
+          <select className="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+            <option>Select</option>
+          </select>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Username</label>
+          <input type="text" placeholder="User" className="mt-1 block w-full p-2 border border-gray-300 rounded-md" />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Email</label>
+          <input type="email" placeholder="Email" className="mt-1 block w-full p-2 border border-gray-300 rounded-md" />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Date</label>
+          <input type="date" className="mt-1 block w-full p-2 border border-gray-300 rounded-md" />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Phone Number</label>
+          <input type="text" placeholder="Phone Number" className="mt-1 block w-full p-2 border border-gray-300 rounded-md" />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Status</label>
+          <select className="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+            <option>Select</option>
+          </select>
+        </div>
+
+        <div className="flex justify-between mt-4">
+          <button type="button" className="inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-700 border border-gray-300 rounded-md hover:bg-gray-100">
+            Reset
+          </button>
+          <button type="submit" className="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-teal-500 border border-transparent rounded-md hover:bg-teal-600">
+            Filter
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};

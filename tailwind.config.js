@@ -13,7 +13,10 @@ module.exports = {
       width:
       {
         "custom":"90%"
-      }
+      },
+      screens: {
+        'custom': '1260px',
+      },
     },
   },
   plugins: [],

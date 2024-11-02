@@ -1,7 +1,7 @@
 "use client"
 import { useState } from 'react';
 import Image from 'next/image';
-import Sidebar, { Main_content } from '@/components/dashboard_components';
+import Sidebar, { Main_content ,Userdetails } from '@/components/dashboard_components';
 import { motion } from 'framer-motion';
 
 export default function Dashboard() {
@@ -14,9 +14,10 @@ export default function Dashboard() {
 
   return (
     <div className="flex flex-col h-full">
+
         <div className=' w-full shadow-sm flex sticky z-1000 top-0 bg-white'>
 
-        <div className="lg:hidden p-4">
+        <div className="custom:hidden p-4">
           <button onClick={handleSidebarToggle} className="text-[#213F7D]">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
@@ -24,7 +25,7 @@ export default function Dashboard() {
           </button>
          </div>
             <div className='flex justify-center items-center'>
-                <div className='p-10 hidden lg:block '>
+                <div className='p-10 hidden custom:block '>
                 <Image src={"/logo.png"} alt="no image" height={100} width={173.76}/>
                 </div>
             </div>
@@ -68,18 +69,21 @@ export default function Dashboard() {
         </div>
         
         <div className='flex flex-grow h-full'>
-          <div className='hidden lg:block w-[283px] h-full overflow-y-auto'>
+          <div className='hidden custom:block w-[283px] h-full overflow-y-auto'>
             <Sidebar/>
           </div>
 
-          <motion.div initial={{ x: -300 }} animate={{ x: isSidebarOpen ? 0 : -300 }} transition={{ duration: 0.3 }} className={`fixed inset-y-0 h-screen left-0 w-[283px] lg:hidden bg-white shadow-md overflow-y-auto z-50`}>
+          <motion.div initial={{ x: -300 }} animate={{ x: isSidebarOpen ? 0 : -300 }} transition={{ duration: 0.3 }} className={`fixed inset-y-0 h-screen left-0 w-[283px] custom:hidden bg-white shadow-md overflow-y-auto z-50`}>
             <Sidebar/>
           </motion.div>
             {isSidebarOpen && (
           <div onClick={handleSidebarToggle} className="fixed inset-0 bg-black bg-opacity-30 lg:hidden z-40"></div>)}
 
-          <div className='w-full h-full bg-[#FBFBFB] flex justify-center'>
+          {/*<div className='w-full h-full bg-[#FBFBFB] flex justify-center'>
             <Main_content/>
+          </div>*/}
+          <div className='w-full h-full bg-[#FBFBFB] flex justify-center'>
+            <Userdetails/>
           </div>
         </div>
     </div>
