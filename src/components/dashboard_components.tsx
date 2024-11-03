@@ -1,7 +1,6 @@
 import { useState,useEffect} from "react";
 import Image from "next/image";
 import { Filterform } from "./forms";
-import { div } from "framer-motion/client";
 
 
 
@@ -217,14 +216,41 @@ type User = {
   email: string;
   phone: string;
   date_joined: string;
-  status: "Active" | "Inactive" | "Banned"; 
+  status: "Active" | "Inactive" | "Blacklisted";
+  income:string;
+  gender: string,
+  marital_status: string,
+  residence:string,
+  education: string,
+  employment_status: string,
+  sector: string,
+  duration_of_employment:string,
+  office_email:string,
+  loan_repaid_amount: string,
+  twitter:string,
+  facebook:string,
+  instagram:string,
+  guarantor: string,
   };
-export const Main_content = ()=>
+  type Main_contentProps = {
+    user: User;     
+  };
+
+export const Main_content : React.FC<Main_contentProps> = ({ user }) =>
 {
     const [users, setUsers] = useState<User[]>([]);
     const [isopened, setisopened] = useState(false)
     const [menuopened, setmenuopened] = useState<string | null>(null);
-    const [selectedUser, setSelectedUser] = useState<string | null>(null);
+    const [selectedUser, setSelectedUser] = useState<User | null>(null);
+    const [userStatus, setUserStatus] = useState(user.status);
+
+    const activateUser = () => {
+      setUserStatus("Active");
+    };
+
+    const Blacklistuser = () => {
+      setUserStatus("Blacklisted"); 
+    }
 
     useEffect(() => {
       async function fetchUsers() {
@@ -239,6 +265,10 @@ export const Main_content = ()=>
   
       fetchUsers();
     }, []);
+
+    if (selectedUser) {
+      return <Userdetails user={selectedUser} onBack={() => setSelectedUser(null)} />;
+    }
 
     return(
         <div className='w-custom h-3/4  mt-10  '>
@@ -347,12 +377,12 @@ export const Main_content = ()=>
                 <td className="px-4 py-4 border-b">{user.email}</td>
                 <td className="px-4 py-4 border-b">{user.phone}</td>
                 <td className="px-4 py-4 border-b">{user.date_joined}</td>
-                <td className="px-4 py-4 border-b"><span className={`py-1 px-3 rounded-full text-xs ${user.status === "Active"? "bg-green-100 text-green-600": user.status === "Inactive"? "bg-gray-200 text-gray-600": "bg-red-100 text-red-600"}`}>{user.status}</span></td>
+                <td className="px-4 py-4 border-b"><span className={`py-1 px-3 rounded-full text-xs ${userStatus === "Active" ? "bg-green-100 text-green-600": userStatus === "Inactive"? "bg-gray-200 text-gray-600": "bg-red-100 text-red-600"}`}>{user.status}</span></td>
                 <td className="px-4 py-4 border-b">
                   <button className='flex items-center justify-center' onClick={()=> setmenuopened(menuopened === user.id ? null :user.id)}>
                     {menuopened ==user.id && (
                     <div className=" mr-10 absolute z-50 bg-white shadow-md rounded-md">
-                    <div className="">
+                    <div className="" onClick={() => setSelectedUser(user)}>
                       <a href="#" className="flex items-center px-4 py-2 text-custom2 text-[#213F7D] hover:bg-[#39CDCC] hover:bg-opacity-10 hover:text-[#213F7D] hover:text-opacity-100 text-opacity-60">
                       <div className='mr-2'>
                       <Image src={"/icons/view.png"} alt='no image' height={10} width={15}/>
@@ -360,7 +390,7 @@ export const Main_content = ()=>
                         View details</a>
                     </div>
 
-                    <div className="">
+                    <div className="" onClick={Blacklistuser}>
                       <a href="#" className="flex items-center px-4 py-2 text-custom2 text-[#213F7D] hover:bg-[#39CDCC] hover:bg-opacity-10 hover:text-[#213F7D] hover:text-opacity-100 text-opacity-60">
                       <div className='mr-2'>
                       <Image src={"/icons/blacklist.png"} alt='no image' height={10} width={15}/>
@@ -368,17 +398,13 @@ export const Main_content = ()=>
                         Blacklist User</a>
                     </div>
 
-                    <div className="">
-                      <a href="#" className="flex items-center px-4 py-2 text-custom2 text-[#213F7D] hover:bg-[#39CDCC] hover:bg-opacity-10 hover:text-[#213F7D] hover:text-opacity-100 text-opacity-60"
-                        onClick={() => {
-                        setSelectedUser(user);
-                        setmenuopened(null);
-                      }}>
+                    <button className="" onClick={activateUser}>
+                      <a href="#" className="flex items-center px-4 py-2 text-custom2 text-[#213F7D] hover:bg-[#39CDCC] hover:bg-opacity-10 hover:text-[#213F7D] hover:text-opacity-100 text-opacity-60">
                       <div className='mr-2'>
                       <Image src={"/icons/active.png"} alt='no image' height={10} width={15}/>
                       </div>
                         Activate User</a>
-                    </div>
+                    </button>
 
                     </div>
                     )}
@@ -411,16 +437,20 @@ export const Main_content = ()=>
     )
 }
 
+type UserDetailsProps = {
+  user: User;     
+  onBack: () => void;
+};
 
-export const Userdetails=() =>
+export const Userdetails: React.FC<UserDetailsProps> = ({ user, onBack }) =>
 {
   return(
     <div className='w-custom h-3/4  mt-10'>
 
-      <div className="w-full flex items-center">
+      <button className="w-full flex items-center" onClick={onBack}>
         <div className="mr-2 "><Image src={'/icons/back.png'} alt="no image" height={20} width={30}/></div>
         <p className='text-custom2 text-[#213F7D]'>Back to Users</p>
-      </div>
+      </button>
       <div className="w-full h-20 ">
       <p className=' text-[#213F7D] text-2xl font-bold mt-3 float-start '>User Details</p>
         <div className="flex float-end">
@@ -441,8 +471,8 @@ export const Userdetails=() =>
           </div>
           <div className="flex">
             <div className="mr-5 border-r-2 border-[#545F7D]">
-              <p className="text-[#213F7D] text-2xl font-bold mr-5">Grace Effiom</p>
-              <p className="text-custom2 text-[#213F7D]">LSQFf587g90</p>
+              <p className="text-[#213F7D] text-2xl font-bold mr-5">{user.name}</p>
+              <p className="text-custom2 text-[#213F7D] mr-5">{user.id}</p>
             </div>
             <div className="mr-5 border-r-2 border-[#545F7D]">
               <p className="text-custom2 text-[#213F7D] mr-5">User`s Tier</p>
@@ -459,7 +489,7 @@ export const Userdetails=() =>
               </div>
             </div>
             <div className="mr-5">
-              <p className="text-[#213F7D] text-2xl font-bold mr-10">₦200,000.00</p>
+              <p className="text-[#213F7D] text-2xl font-bold mr-10">₦{user.income}</p>
               <p className="text-custom2 text-[#545F7D] mr-10">9912345678/providus Bank</p>
             </div>
           </div>
@@ -496,19 +526,19 @@ export const Userdetails=() =>
               <td>
                 <div className="">
                   <p className="text-custom2 text-[#545F7D] mr-10">FULL NAME</p>
-                  <p className="text-custom2 text-[#545F7D] mr-10 font-bold">Grace Effiom</p>
+                  <p className="text-custom2 text-[#545F7D] mr-10 font-bold">{user.name}</p>
                 </div>
               </td>
               <td>
                 <div className="">
                   <p className="text-custom2 text-[#545F7D] mr-10">PHONE NUMBER</p>
-                  <p className="text-custom2 text-[#545F7D] mr-10 font-bold">09122072401</p>
+                  <p className="text-custom2 text-[#545F7D] mr-10 font-bold">{user.phone}</p>
                 </div>
               </td>
               <td>
               <div className="">
                 <p className="text-custom2 text-[#545F7D] mr-10">EMAIL ADDRESS</p>
-                <p className="text-custom2 text-[#545F7D] mr-10 font-bold">ofeoritseamiteye03@gmail.com</p>
+                <p className="text-custom2 text-[#545F7D] mr-10 font-bold">{user.email}</p>
               </div>
               </td>
               <td>
@@ -520,7 +550,7 @@ export const Userdetails=() =>
               <td>
               <div className="">
                 <p className="text-custom2 text-[#545F7D] mr-10">GENDER</p>
-                <p className="text-custom2 text-[#545F7D] mr-10 font-bold">FEMALE</p>
+                <p className="text-custom2 text-[#545F7D] mr-10 font-bold">{user.gender}</p>
               </div>
               </td>
               </tr>
@@ -529,7 +559,7 @@ export const Userdetails=() =>
               <td>
               <div className="mt-10">
                 <p className="text-custom2 text-[#545F7D] mr-10">MARITAL STATUS</p>
-                <p className="text-custom2 text-[#545F7D] mr-10 font-bold">Single</p>
+                <p className="text-custom2 text-[#545F7D] mr-10 font-bold">{user.marital_status}</p>
               </div>
               </td>
               <td>
@@ -540,8 +570,8 @@ export const Userdetails=() =>
               </td>
               <td>
               <div className="mt-10">
-                <p className="text-custom2 text-[#545F7D] mr-10">TYPE OF RESIDENCE</p>
-                <p className="text-custom2 text-[#545F7D] mr-10 font-bold">Parent`s Apartment</p>
+                <p className="text-custom2 text-[#545F7D] mr-10">ADDRESS</p>
+                <p className="text-custom2 text-[#545F7D] mr-10 font-bold">{user.residence}</p>
               </div>
               </td>
               </tr>
@@ -557,25 +587,25 @@ export const Userdetails=() =>
               <td>
                 <div className="">
                   <p className="text-custom2 text-[#545F7D] mr-10">LEVEL OF EDUCATION</p>
-                  <p className="text-custom2 text-[#545F7D] mr-10 font-bold">B.Sc</p>
+                  <p className="text-custom2 text-[#545F7D] mr-10 font-bold">{user.education}</p>
                 </div>
               </td>
               <td>
                 <div className="">
                   <p className="text-custom2 text-[#545F7D] mr-10">EMPLOYMENT STATUS</p>
-                  <p className="text-custom2 text-[#545F7D] mr-10 font-bold">Employed</p>
+                  <p className="text-custom2 text-[#545F7D] mr-10 font-bold">{user.employment_status}</p>
                 </div>
               </td>
               <td>
               <div className="">
                 <p className="text-custom2 text-[#545F7D] mr-10">SECTOR OF EMPLOYMENT</p>
-                <p className="text-custom2 text-[#545F7D] mr-10 font-bold">FinTech</p>
+                <p className="text-custom2 text-[#545F7D] mr-10 font-bold">{user.sector}</p>
               </div>
               </td>
               <td>
               <div className="">
                   <p className="text-custom2 text-[#545F7D] mr-10">DURATION OF EMPLOYMENT</p>
-                  <p className="text-custom2 text-[#545F7D] mr-10 font-bold">2 years</p>
+                  <p className="text-custom2 text-[#545F7D] mr-10 font-bold">{user.duration_of_employment}</p>
               </div>
               </td>
               </tr>
@@ -584,19 +614,19 @@ export const Userdetails=() =>
               <td>
               <div className="mt-10">
                 <p className="text-custom2 text-[#545F7D] mr-10">OFFICE EMAIL</p>
-                <p className="text-custom2 text-[#545F7D] mr-10 font-bold">grace@lendsqr.com</p>
+                <p className="text-custom2 text-[#545F7D] mr-10 font-bold">{user.office_email}</p>
               </div>
               </td>
               <td>
               <div className="mt-10">
                 <p className="text-custom2 text-[#545F7D] mr-10">MONTHLY INCOME</p>
-                <p className="text-custom2 text-[#545F7D] mr-10 font-bold">₦200,000-₦400,000</p>
+                <p className="text-custom2 text-[#545F7D] mr-10 font-bold">₦{user.income}</p>
               </div>
               </td>
               <td>
               <div className="mt-10">
                 <p className="text-custom2 text-[#545F7D] mr-10">LOAN REPAYMENT</p>
-                <p className="text-custom2 text-[#545F7D] mr-10 font-bold">₦40,000</p>
+                <p className="text-custom2 text-[#545F7D] mr-10 font-bold">{user.loan_repaid_amount}</p>
               </div>
               </td>
               </tr>
@@ -612,19 +642,19 @@ export const Userdetails=() =>
               <td>
                 <div className="">
                   <p className="text-custom2 text-[#545F7D] mr-10">TWITTER</p>
-                  <p className="text-custom2 text-[#545F7D] mr-10 font-bold">@grace_effiom</p>
+                  <p className="text-custom2 text-[#545F7D] mr-10 font-bold">{user.twitter}</p>
                 </div>
               </td>
               <td>
                 <div className="">
                   <p className="text-custom2 text-[#545F7D] mr-10">FACEBOOK</p>
-                  <p className="text-custom2 text-[#545F7D] mr-10 font-bold">Grace Effiom</p>
+                  <p className="text-custom2 text-[#545F7D] mr-10 font-bold">{user.facebook}</p>
                 </div>
               </td>
               <td>
               <div className="">
                 <p className="text-custom2 text-[#545F7D] mr-10">INSTAGRAM</p>
-                <p className="text-custom2 text-[#545F7D] mr-10 font-bold">@grace_effiom</p>
+                <p className="text-custom2 text-[#545F7D] mr-10 font-bold">{user.instagram}</p>
               </div>
               </td>
               </tr>
