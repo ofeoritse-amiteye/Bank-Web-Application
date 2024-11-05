@@ -5,14 +5,9 @@ A web application built with React and Tailwind CSS. This application includes a
 * Features
 * Technologies
 * Setup
-* Usagegi
-<<<<<<< HEAD
+* Usage
 * Future Enhancements
-=======
-* Screenshots
 * Future Enhancements
-* License
->>>>>>> 5f06ff4b5bf13ffc216abe72c46858971a5f509e
 
 ## Features
 * Responsive Sidebar: A sliding sidebar menu that adjusts based on screen size.
@@ -32,12 +27,8 @@ Responsive Design: Built to look great on any screen size.
 * Icons and Images: Next.js Image component
 
 ## Setup
-<<<<<<< HEAD
 1. Clone the repository: git clone `https://github.com/ofeoritse-amiteye/Lendsqr-fe-test.git`
-=======
-1. Clone the repository: ` git clone https://github.com/ofeoritse-amiteye/Lendsqr-fe-test.git `
->>>>>>> 5f06ff4b5bf13ffc216abe72c46858971a5f509e
-
+   
 2. Navigate into the project directory: `cd Lendsqr-fe-test`
 
 3. Install dependencies:  `npm install`
