@@ -39,7 +39,7 @@ export default function Loginform() {
     <div className="h-screen w-full flex items-center justify-center">
       <div className="md:w-1/2 w-2/3 bg-transparent">
       {showPopup && (
-          <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-md">
+          <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-md mb-5">
             Email : jamesjohn123@gmail.com < br/>
             password: 12345USER
           </div>

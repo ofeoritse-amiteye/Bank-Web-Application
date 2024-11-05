@@ -71,7 +71,7 @@ const Dashboard: React.FC = () => {
             </a>
             <div className='m-5 md:flex justify-center items-center hidden'>
                 <button>
-                    <Image src={"/bell.png"} alt='no image' height={20} width={20}/>
+                    <Image src={"/icons/bell.png"} alt='no image' height={20} width={20}/>
                 </button>
             </div>
             <div className='flex'>
