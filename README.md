@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Lendsqr Frontend Engineering Test
 
-## Getting Started
+A web application built with React and Tailwind CSS. The application includes a responsive loginpage, dashboard, sidebar, user cards with summary data, and a dynamic user table that allows for details viewing and interaction.
 
-First, run the development server:
+Table of Contents
+Features
+Technologies
+Setup
+Usage
+Screenshots
+Future Enhancements
+License
 
-```bash
+Features
+Responsive Sidebar: A sliding sidebar menu that adjusts based on screen size.
+User Cards: Summary cards displaying key metrics, such as total users and active users.
+User Table: Table format displaying detailed user information like organization, name, email, phone, date joined, and status.
+Detail View: Clickable "View details" button in the user table for accessing individual user information.
+Custom Animations: Framer Motion animations for smooth transitions and interactions.
+Responsive Design: Built to look great on any screen size.
+
+Technologies
+Frontend: React.js, Tailwind CSS, scss.
+Animation: Framer Motion
+Icons and Images: Next.js Image component
+
+Setup
+Clone the repository:
+bash
+Copy code
+git clone https://github.com/ofeoritse-amiteye/Lendsqr-fe-test.git
+Navigate into the project directory:
+bash
+Copy code
+cd your-repo
+Install dependencies:
+bash
+Copy code
+npm install
+Start the development server:
+bash
+Copy code
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Open your browser and visit http://localhost:3000 to see the application.
+Usage
+Sidebar: The sidebar contains navigational links and automatically collapses into a hamburger menu on smaller screens.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+User Cards: Displays key statistics about the user base, including total users and active users.
+User Table: Lists users with detailed information and a "View details" button for each user.
+Detail View: Clicking "View details" opens a detailed view of the selected user.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Future Enhancements
+Add sorting and filtering to the user table.
+Integrate with a backend API for real-time data.
+Enhance animations and UI/UX for a more engaging experience.
+License
+This project is licensed under the MIT License.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Let me know if you’d like to customize or add more details to any section!
