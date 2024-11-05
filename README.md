@@ -28,7 +28,7 @@ Responsive Design: Built to look great on any screen size.
 * Icons and Images: Next.js Image component
 
 ## Setup
-1. Clone the repository: git clone https://github.com/ofeoritse-amiteye/Lendsqr-fe-test.git
+1. Clone the repository: ` git clone https://github.com/ofeoritse-amiteye/Lendsqr-fe-test.git `
 
 2. Navigate into the project directory: `cd Lendsqr-fe-test`
 
