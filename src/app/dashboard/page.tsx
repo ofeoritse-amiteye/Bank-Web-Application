@@ -51,14 +51,14 @@ const Dashboard: React.FC = () => {
          </div>
             <div className='flex justify-center items-center'>
                 <div className='p-10 hidden custom:block '>
-                <Image src={"/logo.png"} alt="no image" height={100} width={173.76}/>
+                <Image src={"images/logo.png"} alt="no image" height={100} width={173.76}/>
                 </div>
             </div>
             <div className='w-1/2 flex items-center'>
             <Image src={"/images/logo.png"} alt='no image' height={30} width={150} className='md:hidden'/>
             <input placeholder='search for anything' type="search" name="" id="" className='p-2 h-12 w-2/3 ml-16 rounded-l-lg border-2 border-gray-300 hidden md:block'/>
             <button type="submit" className='bg-[#39CDCC] h-12 w-14 rounded-r-lg items-center justify-center md:flex hidden'>
-                <Image src={"/search.png"} alt='no image' height={25} width={25}/>
+                <Image src={"/icons/search.png"} alt='no image' height={25} width={25}/>
             </button>
             </div>
             <div className='w-1/2 flex items-center justify-end '>
