@@ -6,6 +6,7 @@ import Image from "next/image";
 export default function Loginform() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPopup, setShowPopup] = useState(true); 
   const router = useRouter();
 
   useEffect(() => {
@@ -25,15 +26,24 @@ export default function Loginform() {
       router.push("/dashboard"); 
     } else {
       alert("Invalid credentials. Please try again.");
+      setPassword("")
+      setEmail("")
     }
   };
 
-  alert("Login-email :jamesjohn123@gmail.com , password : 12345USER")
-
+  setTimeout(() => {
+    setShowPopup(false);
+  }, 5000);
 
   return (
     <div className="h-screen w-full flex items-center justify-center">
       <div className="md:w-1/2 w-2/3 bg-transparent">
+      {showPopup && (
+          <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-md">
+            Email : jamesjohn123@gmail.com < br/>
+            password: 12345USER
+          </div>
+        )}
       <Image src={"/logo.png"} alt="no image" height={100} width={173.76} className="md:hidden mb-10"/>
         <h2 className="text-[40px] font-bold text-[#213F7D]">Welcome!</h2>
         <p className="text-[#545F7D]">Enter details to Login</p>
@@ -65,6 +75,7 @@ export default function Loginform() {
             LOG IN
           </button>
         </div>
+
       </div>
     </div>
   );
