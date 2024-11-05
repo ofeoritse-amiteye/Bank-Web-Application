@@ -68,7 +68,7 @@ export default function Sidebar ()
             <div className="">
               <a href="#" className={linkClass("Guarantors")} onClick={() => handleSelect("Guarantors")}>
               <div className='mr-2'>
-              <Image src={"/icons/users_1.png"} alt='no image' height={10} width={15}/>
+              <Image src={"/icons/users.png"} alt='no image' height={10} width={15}/>
               </div>
               Guarantors</a>
             </div>
@@ -96,7 +96,7 @@ export default function Sidebar ()
             <div className="">
               <a href="#" className={linkClass("Loan_Requests")} onClick={() => handleSelect("Loan_Requests")}>
               <div className='mr-2'>
-              <Image src={"/icons/group.png"} alt='no image' height={10} width={15}/>
+              <Image src={"/icons/Group.png"} alt='no image' height={10} width={15}/>
               </div>
                 Loan Requests</a>
             </div>
@@ -127,14 +127,14 @@ export default function Sidebar ()
             <div className="">
               <a href="#" className={linkClass("Loan_Products")} onClick={() => handleSelect("Loan_Products")}>
               <div className='mr-2'>
-              <Image src={"/icons/group.png"} alt='no image' height={10} width={15}/>
+              <Image src={"/icons/Group.png"} alt='no image' height={10} width={15}/>
               </div>
                 Loan Products</a>
             </div>
             <div className="">
               <a href="#" className={linkClass("Savings_Products")} onClick={() => handleSelect("Savings_Products")}>
               <div className='mr-2'>
-              <Image src={"/icons/group2.png"} alt='no image' height={10} width={15}/>
+              <Image src={"/icons/Group2.png"} alt='no image' height={10} width={15}/>
               </div>
                 Savings Products</a>
             </div>

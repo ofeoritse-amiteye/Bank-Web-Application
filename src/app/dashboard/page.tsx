@@ -51,7 +51,7 @@ const Dashboard: React.FC = () => {
          </div>
             <div className='flex justify-center items-center'>
                 <div className='p-10 hidden custom:block '>
-                <Image src={"images/logo.png"} alt="no image" height={100} width={173.76}/>
+                <Image src={"/images/logo.png"} alt="no image" height={100} width={173.76}/>
                 </div>
             </div>
             <div className='w-1/2 flex items-center'>

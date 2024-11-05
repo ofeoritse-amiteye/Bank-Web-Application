@@ -44,7 +44,7 @@ export default function Loginform() {
             password: 12345USER
           </div>
         )}
-      <Image src={"/logo.png"} alt="no image" height={100} width={173.76} className="md:hidden mb-10"/>
+      <Image src={"/images/logo.png"} alt="no image" height={100} width={173.76} className="md:hidden mb-10"/>
         <h2 className="text-[40px] font-bold text-[#213F7D]">Welcome!</h2>
         <p className="text-[#545F7D]">Enter details to Login</p>
         <div className="mt-10 mb-5 w-full">
