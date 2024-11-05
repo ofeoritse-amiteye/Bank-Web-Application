@@ -1,4 +1,4 @@
-import { useState,useEffect} from "react";
+import { useState,useEffect,  useRef} from "react";
 import Image from "next/image";
 import { Filterform } from "./forms";
 import styles from "./dashboard.module.scss";
@@ -280,6 +280,21 @@ type User = {
 
 export const Main_content : React.FC<Main_contentProps> = ({}) =>
 {
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+      setmenuopened(null);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
     const [users, setUsers] = useState<User[]>([]);
     const [isopened, setisopened] = useState(false)
     const [menuopened, setmenuopened] = useState<string | null>(null);
@@ -309,7 +324,6 @@ export const Main_content : React.FC<Main_contentProps> = ({}) =>
     if (selectedUser) {
       return <Userdetails user={selectedUser} onBack={() => setSelectedUser(null)} />;
     }
-
     return(
         <div className='w-custom h-3/4  mt-10  '>
         <p className='text-2xl font-bold text-[#213F7D]'>Users</p>
@@ -437,40 +451,43 @@ export const Main_content : React.FC<Main_contentProps> = ({}) =>
                 </button>
                 
                 {menuopened === user.id && (
-                  <div className="absolute z-50 bg-white shadow-md rounded-md mt-2 right-0 mr-5 w-40">
-                    <div className="px-4 py-2 cursor-pointer" onClick={() => setSelectedUser(user)}>
-                      <a 
-                        href="#" 
-                        className="flex items-center text-custom2 text-[#213F7D] hover:bg-[#39CDCC] hover:bg-opacity-10 hover:text-[#213F7D] hover:text-opacity-100 text-opacity-60"
-                      >
-                        <div className="mr-2">
-                          <Image src="/icons/view.png" alt="no image" height={10} width={15} />
-                        </div>
-                        View details
-                      </a>
-                    </div>
-
-                    <div className="px-4 py-2 cursor-pointer" onClick={() => updateUserStatus(user.id, "Blacklisted")}>
-                      <a 
-                        href="#" 
-                        className="flex items-center text-custom2 text-[#213F7D] hover:bg-[#39CDCC] hover:bg-opacity-10"
-                      >
-                        <Image src="/icons/blacklist.png" alt="no image" height={10} width={15} />
-                        <span className="ml-2">Blacklist User</span>
-                      </a>
-                    </div>
-
-                    <div className="px-4 py-2 cursor-pointer" onClick={() => updateUserStatus(user.id, "Active")}>
-                      <a 
-                        href="#" 
-                        className="flex items-center text-custom2 text-[#213F7D] hover:bg-[#39CDCC] hover:bg-opacity-10"
-                      >
-                        <Image src="/icons/active.png" alt="no image" height={10} width={15} />
-                        <span className="ml-2">Activate User</span>
-                      </a>
-                    </div>
+                <div
+                  ref={menuRef}
+                  className="absolute z-50 bg-white shadow-md rounded-md mt-2 right-0 mr-5 w-40"
+                >
+                  <div className="px-4 py-2 cursor-pointer hover:bg-[#39CDCC] hover:bg-opacity-10 hover:text-[#213F7D] hover:text-opacity-100" onClick={() => setSelectedUser(user)}>
+                    <a
+                      href="#"
+                      className="flex items-center text-custom2 text-[#213F7D]"
+                    >
+                      <div className="mr-2">
+                        <Image src="/icons/view.png" alt="no image" height={10} width={15} />
+                      </div>
+                      View details
+                    </a>
                   </div>
-                )}
+
+                  <div className="px-4 py-2 cursor-pointer  hover:bg-[#39CDCC] hover:bg-opacity-10 hover:text-[#213F7D] hover:text-opacity-100" onClick={() => updateUserStatus(user.id, "Blacklisted")}>
+                    <a
+                      href="#"
+                      className="flex items-center text-custom2 text-[#213F7D]"
+                    >
+                      <Image src="/icons/blacklist.png" alt="no image" height={10} width={15} />
+                      <span className="ml-2">Blacklist User</span>
+                    </a>
+                  </div>
+
+                  <div className="px-4 py-2 cursor-pointer  hover:bg-[#39CDCC] hover:bg-opacity-10 hover:text-[#213F7D] hover:text-opacity-100" onClick={() => updateUserStatus(user.id, "Active")}>
+                    <a
+                      href="#"
+                      className="flex items-center text-custom2 text-[#213F7D]"
+                    >
+                      <Image src="/icons/active.png" alt="no image" height={10} width={15} />
+                      <span className="ml-2">Activate User</span>
+                    </a>
+                  </div>
+                </div>
+              )}
               </td>
                 </tr>
                 ))}
@@ -513,13 +530,13 @@ export const Userdetails: React.FC<UserDetailsProps> = ({ user, onBack }) =>
         <div className="mr-2 "><Image src={'/icons/back.png'} alt="no image" height={20} width={30}/></div>
         <p className='text-custom2 text-[#213F7D]'>Back to Users</p>
       </button>
-      <div className="w-full h-20  mb-10">
+      <div className="w-full h-20 mb-10 md:mb-0">
       <p className=' text-[#213F7D] text-2xl font-bold mt-3 float-start mb-5 '>User Details</p>
         <div className="flex float-end">
         <button className=" w-1/2 custom:w-56 custom:h-10 border border-[#E4033B] font-bold text-[#E4033B] flex items-center justify-center rounded-md mr-5 hover:bg-[#E4033B] hover:text-white text-[15]">
           BLACKLIST USER
         </button>
-        <button className="w-56 h-10 border border-[#39CDCC] font-bold text-[#39CDCC] flex items-center justify-center rounded-md hover:bg-[#39CDCC] hover:text-white">
+        <button className="w-52 h-10 border border-[#39CDCC] font-bold text-[#39CDCC] flex items-center justify-center rounded-md hover:bg-[#39CDCC] hover:text-white">
           ACTIVATE USER
         </button>
         </div>
@@ -557,7 +574,7 @@ export const Userdetails: React.FC<UserDetailsProps> = ({ user, onBack }) =>
           </div>
         </div>
 
-        <div className="flex  w-full ml-6 min-w-[1000px]">
+        <div className="flex  w-full ml-6 min-w-[1000px] text-[#213F7D]">
             <a href="" className="mr-5 border-b-2 border-[#39CDCC] w-48 flex justify-center ">
               <p className="text-custom2 text-[#39CDCC]">General Details</p>
             </a>
@@ -581,7 +598,7 @@ export const Userdetails: React.FC<UserDetailsProps> = ({ user, onBack }) =>
 
       <div className="w-full bg-white shadow-md mt-5 p-5 mb-10 overflow-x-scroll">
       <p className="text-custom2 text-[#213F7D] mr-10 font-bold mb-5">Personal Information</p>
-        <div className="flex flex-wrap border-b-2 border-[[#ecedf0]]">
+        <div className="flex flex-wrap border-b-2 border-[#ecedf0]">
           <table className="mb-5 w-full min-w-[1000px] ">
             <tbody className="">
               <tr className="">
