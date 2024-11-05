@@ -1,15 +1,40 @@
 "use client"
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Sidebar, { Main_content } from '@/components/dashboard_components';
 import { motion } from 'framer-motion';
 
-export default function Dashboard() {
+const Dashboard: React.FC = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const handleSidebarToggle = () => {
     setSidebarOpen(!isSidebarOpen);
   };
+
+  const user ={
+    id: '001',
+    organization: 'ABC Corp',
+    name: 'John Doe',
+    email: 'johndoe@example.com',
+    phone: '123-456-7890',
+    date_joined: '2023-01-01',
+    status: 'Active' as "Active" | "Inactive" | "Blacklisted",
+    income: '50000',
+    gender: 'Male',
+    marital_status: "single",
+    residence:"Apartment",
+    education:"B.sc",
+    employment_status:"Employed",
+    sector:"fintech",
+    duration_of_employment:"3,years",
+    office_email:"officeemail@gmail.com",
+    loan_repaid_amount: '40,000',
+    twitter:"@twitter",
+    facebook:"fb.com",
+    instagram:"ig.com",
+    guarantor: 'Jane Doe',
+
+};
 
 
   return (
@@ -80,9 +105,10 @@ export default function Dashboard() {
           <div onClick={handleSidebarToggle} className="fixed inset-0 bg-black bg-opacity-30 lg:hidden z-40"></div>)}
 
           <div className='w-full h-full bg-[#FBFBFB] flex justify-center'>
-            <Main_content/>
+            <Main_content user={user}/>
           </div>
         </div>
     </div>
   );
 }
+export default Dashboard;

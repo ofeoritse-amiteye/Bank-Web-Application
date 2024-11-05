@@ -33,7 +33,6 @@ export default function Sidebar ()
         <div className="lg:hidden p-4 text-right">
             <button onClick={handleSidebarToggle} className="text-[#213F7D]">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
               </svg>
             </button>
           </div>
@@ -216,7 +215,7 @@ type User = {
   email: string;
   phone: string;
   date_joined: string;
-  status: "Active" | "Inactive" | "Blacklisted";
+  status: string;
   income:string;
   gender: string,
   marital_status: string,
@@ -233,29 +232,49 @@ type User = {
   guarantor: string,
   };
   type Main_contentProps = {
-    user: User;     
+    user:{
+      id: string;
+      organization: string;
+      name: string;
+      email: string;
+      phone: string;
+      date_joined: string;
+      status: "Active" | "Inactive" | "Blacklisted";
+      income:string;
+      gender: string,
+      marital_status: string,
+      residence:string,
+      education: string,
+      employment_status: string,
+      sector: string,
+      duration_of_employment:string,
+      office_email:string,
+      loan_repaid_amount: string,
+      twitter:string,
+      facebook:string,
+      instagram:string,
+      guarantor: string, 
+    }    
   };
 
-export const Main_content : React.FC<Main_contentProps> = ({ user }) =>
+export const Main_content : React.FC<Main_contentProps> = ({}) =>
 {
     const [users, setUsers] = useState<User[]>([]);
     const [isopened, setisopened] = useState(false)
     const [menuopened, setmenuopened] = useState<string | null>(null);
     const [selectedUser, setSelectedUser] = useState<User | null>(null);
-    const [userStatus, setUserStatus] = useState(user.status);
 
-    const activateUser = () => {
-      setUserStatus("Active");
+    const updateUserStatus = (userId: string, newStatus: string) => {
+      setUsers(prevUsers =>
+        prevUsers.map(user =>
+          user.id === userId ? { ...user, status: newStatus } : user
+        )
+      );
     };
-
-    const Blacklistuser = () => {
-      setUserStatus("Blacklisted"); 
-    }
-
     useEffect(() => {
       async function fetchUsers() {
         try {
-          const response = await fetch('https://run.mocky.io/v3/822d0f62-064c-4b2e-a789-0b77e8609c28');
+          const response = await fetch('https://run.mocky.io/v3/c858cb6d-bbfe-492d-bcbd-2eeba92c6a78');
           const data = await response.json();
           setUsers(data);
         } catch (error) {
@@ -275,6 +294,7 @@ export const Main_content : React.FC<Main_contentProps> = ({ user }) =>
         <p className='text-2xl font-bold text-[#213F7D]'>Users</p>
         <div className='overflow-x-auto' >
         <div className='flex w-full mt-10 mb-10 justify-between min-w-[1000px]'>
+
           <div className='w-1/5 h-[170px] bg-white shadow-md rounded-md'>
             <div className='p-7'>
               <Image src={'/icons/icon2.png'} alt='no image' height={50} width={50}/>
@@ -307,6 +327,15 @@ export const Main_content : React.FC<Main_contentProps> = ({ user }) =>
       </div>
         <div className='w-full bg-white shadow-md mb-10 p-5'>
         <div className="overflow-auto h-[640px] mb-10">
+
+        {isopened &&
+              <div className="absolute z-50 m-3">
+                <div className="">
+                <button className='h-5 w-5 flex items-center justify-center font-bold text-xl float-right p-5 text-red-600 m-1' onClick={()=>setisopened(false)}>x</button>
+                <Filterform/>
+                </div>
+                </div> 
+                }
         <table className="min-w-screen w-[1100px] bg-white rounded-lg">
               <thead>
                 <tr className="text-left text-gray-600 font-semibold">
@@ -314,7 +343,7 @@ export const Main_content : React.FC<Main_contentProps> = ({ user }) =>
                   <div className='flex items-center'>
                       ORGANIZATION
                         <button className='ml-2' onClick={() => setisopened(true)} >
-                        <Image src={"/icons/sort.png"} alt='no image' height={20} width={20}/>
+                        <Image className="min-w-5" src={"/icons/sort.png"} alt='no image' height={20} width={20}/>
                       </button>
                     </div>
                   </th>
@@ -360,16 +389,7 @@ export const Main_content : React.FC<Main_contentProps> = ({ user }) =>
                   </th>
                 </tr>
               </thead>
-              <tbody>
-              {isopened &&
-              <div className="absolute z-50 m-3">
-                <div className="">
-                <button className='h-5 w-5 flex items-center justify-center font-bold text-xl float-right p-5 text-red-600 m-1' onClick={()=>setisopened(false)}>x</button>
-                <Filterform/>
-                </div>
-                </div> 
-                }
-
+                <tbody>
                 {users.map((user)=>(
                 <tr key={user.id} className="hover:bg-gray-100">
                 <td className="px-4 py-4 border-b">{user.organization}</td>
@@ -377,38 +397,60 @@ export const Main_content : React.FC<Main_contentProps> = ({ user }) =>
                 <td className="px-4 py-4 border-b">{user.email}</td>
                 <td className="px-4 py-4 border-b">{user.phone}</td>
                 <td className="px-4 py-4 border-b">{user.date_joined}</td>
-                <td className="px-4 py-4 border-b"><span className={`py-1 px-3 rounded-full text-xs ${userStatus === "Active" ? "bg-green-100 text-green-600": userStatus === "Inactive"? "bg-gray-200 text-gray-600": "bg-red-100 text-red-600"}`}>{user.status}</span></td>
                 <td className="px-4 py-4 border-b">
-                  <button className='flex items-center justify-center' onClick={()=> setmenuopened(menuopened === user.id ? null :user.id)}>
-                    {menuopened ==user.id && (
-                    <div className=" mr-10 absolute z-50 bg-white shadow-md rounded-md">
-                    <div className="" onClick={() => setSelectedUser(user)}>
-                      <a href="#" className="flex items-center px-4 py-2 text-custom2 text-[#213F7D] hover:bg-[#39CDCC] hover:bg-opacity-10 hover:text-[#213F7D] hover:text-opacity-100 text-opacity-60">
-                      <div className='mr-2'>
-                      <Image src={"/icons/view.png"} alt='no image' height={10} width={15}/>
-                      </div>
-                        View details</a>
+                <span className={`py-1 px-3 rounded-full text-xs ${
+                      user.status === "Active" ? "bg-green-100 text-green-600" :
+                      user.status === "Inactive" ? "bg-gray-200 text-gray-600" :
+                      user.status === "Blacklisted" ? "bg-red-100 text-red-600" :
+                      ""
+                    }`}>
+                      {user.status}
+                    </span>
+                </td>
+                <td className="relative px-4 py-4 border-b">
+                <button 
+                  className="flex items-center justify-center" 
+                  onClick={() => setmenuopened(menuopened === user.id ? null : user.id)}
+                >
+                  <Image src="/icons/dots.png" alt="no image" height={30} width={40} className="min-w-5" />
+                </button>
+                
+                {menuopened === user.id && (
+                  <div className="absolute z-50 bg-white shadow-md rounded-md mt-2 right-0 mr-5 w-40">
+                    <div className="px-4 py-2 cursor-pointer" onClick={() => setSelectedUser(user)}>
+                      <a 
+                        href="#" 
+                        className="flex items-center text-custom2 text-[#213F7D] hover:bg-[#39CDCC] hover:bg-opacity-10 hover:text-[#213F7D] hover:text-opacity-100 text-opacity-60"
+                      >
+                        <div className="mr-2">
+                          <Image src="/icons/view.png" alt="no image" height={10} width={15} />
+                        </div>
+                        View details
+                      </a>
                     </div>
 
-                    <div className="" onClick={Blacklistuser}>
-                      <a href="#" className="flex items-center px-4 py-2 text-custom2 text-[#213F7D] hover:bg-[#39CDCC] hover:bg-opacity-10 hover:text-[#213F7D] hover:text-opacity-100 text-opacity-60">
-                      <div className='mr-2'>
-                      <Image src={"/icons/blacklist.png"} alt='no image' height={10} width={15}/>
-                      </div>
-                        Blacklist User</a>
+                    <div className="px-4 py-2 cursor-pointer" onClick={() => updateUserStatus(user.id, "Blacklisted")}>
+                      <a 
+                        href="#" 
+                        className="flex items-center text-custom2 text-[#213F7D] hover:bg-[#39CDCC] hover:bg-opacity-10"
+                      >
+                        <Image src="/icons/blacklist.png" alt="no image" height={10} width={15} />
+                        <span className="ml-2">Blacklist User</span>
+                      </a>
                     </div>
 
-                    <button className="" onClick={activateUser}>
-                      <a href="#" className="flex items-center px-4 py-2 text-custom2 text-[#213F7D] hover:bg-[#39CDCC] hover:bg-opacity-10 hover:text-[#213F7D] hover:text-opacity-100 text-opacity-60">
-                      <div className='mr-2'>
-                      <Image src={"/icons/active.png"} alt='no image' height={10} width={15}/>
-                      </div>
-                        Activate User</a>
-                    </button>
-
+                    <div className="px-4 py-2 cursor-pointer" onClick={() => updateUserStatus(user.id, "Active")}>
+                      <a 
+                        href="#" 
+                        className="flex items-center text-custom2 text-[#213F7D] hover:bg-[#39CDCC] hover:bg-opacity-10"
+                      >
+                        <Image src="/icons/active.png" alt="no image" height={10} width={15} />
+                        <span className="ml-2">Activate User</span>
+                      </a>
                     </div>
-                    )}
-                    <Image src={"/icons/dots.png"} alt="no image" height={30} width={25}/></button></td>
+                  </div>
+                )}
+              </td>
                 </tr>
                 ))}
               </tbody>
@@ -446,15 +488,14 @@ export const Userdetails: React.FC<UserDetailsProps> = ({ user, onBack }) =>
 {
   return(
     <div className='w-custom h-3/4  mt-10'>
-
       <button className="w-full flex items-center" onClick={onBack}>
         <div className="mr-2 "><Image src={'/icons/back.png'} alt="no image" height={20} width={30}/></div>
         <p className='text-custom2 text-[#213F7D]'>Back to Users</p>
       </button>
-      <div className="w-full h-20 ">
-      <p className=' text-[#213F7D] text-2xl font-bold mt-3 float-start '>User Details</p>
+      <div className="w-full h-20  mb-10">
+      <p className=' text-[#213F7D] text-2xl font-bold mt-3 float-start mb-5 '>User Details</p>
         <div className="flex float-end">
-        <button className="w-56 h-10 border border-[#E4033B] font-bold text-[#E4033B] flex items-center justify-center rounded-md mr-5 hover:bg-[#E4033B] hover:text-white">
+        <button className=" w-1/2 custom:w-56 custom:h-10 border border-[#E4033B] font-bold text-[#E4033B] flex items-center justify-center rounded-md mr-5 hover:bg-[#E4033B] hover:text-white text-[15]">
           BLACKLIST USER
         </button>
         <button className="w-56 h-10 border border-[#39CDCC] font-bold text-[#39CDCC] flex items-center justify-center rounded-md hover:bg-[#39CDCC] hover:text-white">
@@ -463,13 +504,13 @@ export const Userdetails: React.FC<UserDetailsProps> = ({ user, onBack }) =>
         </div>
       </div>
 
-      <div className="w-full bg-white shadow-md">
+      <div className="w-full bg-white shadow-md overflow-x-scroll ">
 
-        <div className="flex w-full items-center p-5">
+        <div className="flex w-full items-center p-5 min-w-[1000px]">
           <div className="mr-5">
             <Image src={"/icons/avatar2.png"} alt="no image" width={120} height={50}/>
           </div>
-          <div className="flex">
+          <div className="flex w-full">
             <div className="mr-5 border-r-2 border-[#545F7D]">
               <p className="text-[#213F7D] text-2xl font-bold mr-5">{user.name}</p>
               <p className="text-custom2 text-[#213F7D] mr-5">{user.id}</p>
@@ -495,12 +536,12 @@ export const Userdetails: React.FC<UserDetailsProps> = ({ user, onBack }) =>
           </div>
         </div>
 
-        <div className="flex ml-6">
+        <div className="flex  w-full ml-6 min-w-[1000px]">
             <a href="" className="mr-5 border-b-2 border-[#39CDCC] w-48 flex justify-center ">
               <p className="text-custom2 text-[#39CDCC]">General Details</p>
             </a>
             <a href="" className="mr-5 w-48 flex justify-center ">
-              <p className="text-custom2 ">Dcuments</p>
+              <p className="text-custom2 ">Documents</p>
             </a>
             <a href="" className="mr-5 w-48 flex justify-center ">
               <p className="text-custom2 ">Bank Details</p>
@@ -517,10 +558,10 @@ export const Userdetails: React.FC<UserDetailsProps> = ({ user, onBack }) =>
         </div>
       </div>
 
-      <div className="w-full bg-white shadow-md mt-5 p-5 mb-10">
-      <p className="text-custom2 text-[#213F7D] mr-10 font-bold mb-5 ">Personal Information</p>
+      <div className="w-full bg-white shadow-md mt-5 p-5 mb-10 overflow-x-scroll">
+      <p className="text-custom2 text-[#213F7D] mr-10 font-bold mb-5">Personal Information</p>
         <div className="flex flex-wrap border-b-2 border-[[#ecedf0]]">
-          <table className="mb-5 w-full">
+          <table className="mb-5 w-full min-w-[1000px] ">
             <tbody className="">
               <tr className="">
               <td>
@@ -581,7 +622,7 @@ export const Userdetails: React.FC<UserDetailsProps> = ({ user, onBack }) =>
 
         <p className="text-custom2 text-[#213F7D] mr-10 font-bold mb-5 mt-5">Education and Employment</p>
         <div className="flex flex-wrap border-b-2 border-[[#ecedf0]]">
-          <table className="w-full mb-5">
+          <table className="w-full mb-5 min-w-[1000px] ">
             <tbody>
               <tr className="">
               <td>
@@ -664,7 +705,7 @@ export const Userdetails: React.FC<UserDetailsProps> = ({ user, onBack }) =>
 
         <p className="text-custom2 text-[#213F7D] mr-10 font-bold mb-5 mt-5">Guarantor</p>
         <div className="flex flex-wrap border-b-2 border-[[#ecedf0]]">
-          <table className="w-full mb-5">
+          <table className="w-full mb-5 min-w-[1000px] ">
             <tbody>
               <tr className="">
               <td>
@@ -698,7 +739,7 @@ export const Userdetails: React.FC<UserDetailsProps> = ({ user, onBack }) =>
 
         <p className="text-custom2 text-[#213F7D] mr-10 font-bold mb-5 mt-5"></p>
         <div className="flex flex-wrap border-b-2 border-[#ecedf0]">
-          <table className="w-full mb-5">
+          <table className="w-full mb-5 min-w-[1000px] ">
             <tbody>
               <tr className="">
               <td>

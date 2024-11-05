@@ -22,11 +22,14 @@ export default function Loginform() {
 
     if (storedUser.email === email && storedUser.password === password) {
       alert("Login successful!");
-      router.push("/homepage"); 
+      router.push("/dashboard"); 
     } else {
       alert("Invalid credentials. Please try again.");
     }
   };
+
+  alert("Login-email :jamesjohn123@gmail.com , password : 12345USER")
+
 
   return (
     <div className="h-screen w-full flex items-center justify-center">
