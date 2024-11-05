@@ -1,6 +1,7 @@
 import { useState,useEffect} from "react";
 import Image from "next/image";
 import { Filterform } from "./forms";
+import styles from "./dashboard.module.scss";
 
 
 
@@ -29,87 +30,107 @@ export default function Sidebar ()
 
     return(
 
-        <div>
-        <div className="lg:hidden p-4 text-right">
-            <button onClick={handleSidebarToggle} className="text-[#213F7D]">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              </svg>
+      <div>
+          <div className={styles.mobileToggle}>
+            <button onClick={handleSidebarToggle} className={styles.toggleButton}>
+              <svg
+                className={styles.icon}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              ></svg>
             </button>
           </div>
 
-            <div className="py-2">
-              <a href="#" className="px-4 py-2 text-custom2 text-[#213F7D] hover:bg-[#39CDCC] hover:bg-opacity-10 hover:text-[#213F7D] flex items-center font-medium">
-              <div className='mr-2'>
-                <Image src={"/icons/briefcase.png"} alt='no image' height={10} width={15}/>
+          <div className={styles.section}>
+            <a href="#" className={styles.switchOrganization}>
+              <div className={styles.iconContainer}>
+                <Image src={"/icons/briefcase.png"} alt="no image" height={10} width={15} />
               </div>
-                Switch organization
-                <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
-                </svg>
-              </a>
-            </div>
-            <div className="py-2">
-              <a href="#" className="flex items-center px-4 py-4 text-custom2 text-[#213F7D] hover:bg-[#39CDCC] hover:bg-opacity-10 hover:text-[#213F7D] hover:text-opacity-100 text-opacity-60">
-              <div className='mr-2'>
-                <Image src={"/icons/home.png"} alt='no image' height={10} width={15}/>
-              </div>
-                Dashboard</a>
-            </div>
+              Switch organization
+              <svg
+                className="w-2.5 h-2.5 ms-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 10 6"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m1 1 4 4 4-4"
+                />
+              </svg>
+            </a>
+          </div>
 
-            <p className=' px-4 text-custom text-[#545F7D] font-medium '>CUSTOMERS</p>
-
-            <div className="">
-              <a href="#" className={linkClass("Users")} onClick={() => handleSelect("Users")} >
-              <div className='mr-2'>
-                <Image src={"/icons/user-friends.png"} alt='no image' height={10} width={15}/>
+          <div className={styles.section}>
+            <a href="#" className={styles.dashboardLink}>
+              <div className={styles.iconContainer}>
+                <Image src={"/icons/home.png"} alt="no image" height={10} width={15} />
               </div>
-                Users</a>
-            </div>
-            <div className="">
+              Dashboard
+            </a>
+          </div>
+
+          <p className={styles.sectionTitle}>CUSTOMERS</p>
+
+          <div className={styles.section}>
+            <a href="#" className={linkClass("Users")} onClick={() => handleSelect("Users")}>
+              <div className={styles.iconContainer}>
+                <Image src={"/icons/user-friends.png"} alt="no image" height={10} width={15} />
+              </div>
+              Users
+            </a>
+          </div>
+            <div className={styles.section}>
               <a href="#" className={linkClass("Guarantors")} onClick={() => handleSelect("Guarantors")}>
-              <div className='mr-2'>
+              <div className={styles.iconContainer}>
               <Image src={"/icons/users.png"} alt='no image' height={10} width={15}/>
               </div>
               Guarantors</a>
             </div>
-            <div className="">
+            <div className={styles.section}>
               <a href="#" className={linkClass("Loans")} onClick={() => handleSelect("Loans")}>
-              <div className='mr-2'>
+              <div className={styles.iconContainer}>
               <Image src={"/icons/sack.png"} alt='no image' height={10} width={15}/>
               </div>
               Loans</a>
             </div>
-            <div className="">
+            <div className={styles.section}>
               <a href="#" className={linkClass("Decision_Models")} onClick={() => handleSelect("Decision_Models")}>
-              <div className='mr-2'>
+              <div className={styles.iconContainer}>
               <Image src={"/icons/handshake-regular.png"} alt='no image' height={10} width={15}/>
               </div>
                 Decision Models</a>
             </div>
-            <div className="">
+            <div className={styles.section}>
               <a href="#" className={linkClass("Savings")} onClick={() => handleSelect("Savings")}>
-              <div className='mr-2'>
+              <div className={styles.iconContainer}>
               <Image src={"/icons/piggy-bank.png"} alt='no image' height={10} width={15}/>
               </div>
                 savings</a>
             </div>
-            <div className="">
+            <div className={styles.section}>
               <a href="#" className={linkClass("Loan_Requests")} onClick={() => handleSelect("Loan_Requests")}>
-              <div className='mr-2'>
+              <div className={styles.iconContainer}>
               <Image src={"/icons/Group.png"} alt='no image' height={10} width={15}/>
               </div>
                 Loan Requests</a>
             </div>
-            <div className="">
+            <div className={styles.section}>
               <a href="#" className={linkClass("Whitelist")} onClick={() => handleSelect("Whitelist")}>
-              <div className='mr-2'>
+              <div className={styles.iconContainer}>
               <Image src={"/icons/user-check.png"} alt='no image' height={10} width={15}/>
               </div>
                 Whitelist</a>
             </div>
-            <div className="">
+            <div className={styles.section}>
               <a href="#" className={linkClass("Karma")} onClick={() => handleSelect("Karma")}>
-              <div className='mr-2'>
+              <div className={styles.iconContainer}>
               <Image src={"/icons/user-times.png"} alt='no image' height={10} width={15}/>
               </div>
                 Karma</a>
@@ -117,65 +138,65 @@ export default function Sidebar ()
 
             <p className='text-custom px-4 mt-5 text-[#545F7D] font-medium'>BUSINESSES</p>
 
-            <div className="">
+            <div className={styles.section}>
               <a href="#" className={linkClass("Organization")} onClick={() => handleSelect("Organization")}>
-              <div className='mr-2'>
+              <div className={styles.iconContainer}>
               <Image src={"/icons/briefcase.png"} alt='no image' height={10} width={15}/>
               </div>
                 Organization</a>
             </div>
-            <div className="">
+            <div className={styles.section}>
               <a href="#" className={linkClass("Loan_Products")} onClick={() => handleSelect("Loan_Products")}>
-              <div className='mr-2'>
+              <div className={styles.iconContainer}>
               <Image src={"/icons/Group.png"} alt='no image' height={10} width={15}/>
               </div>
                 Loan Products</a>
             </div>
-            <div className="">
+            <div className={styles.section}>
               <a href="#" className={linkClass("Savings_Products")} onClick={() => handleSelect("Savings_Products")}>
-              <div className='mr-2'>
+              <div className={styles.iconContainer}>
               <Image src={"/icons/Group2.png"} alt='no image' height={10} width={15}/>
               </div>
                 Savings Products</a>
             </div>
-            <div className="">
+            <div className={styles.section}>
               <a href="#" className={linkClass("Fees_and_charges")} onClick={() => handleSelect("Fees_and_charges")}>
-              <div className='mr-2'>
+              <div className={styles.iconContainer}>
               <Image src={"/icons/coins-solid.png"} alt='no image' height={10} width={15}/>
               </div>
                 Fees and charges</a>
             </div>
-            <div className="">
+            <div className={styles.section}>
               <a href="#" className={linkClass("Transactions")} onClick={() => handleSelect("Transactions")}>
-              <div className='mr-2'>
+              <div className={styles.iconContainer}>
               <Image src={"/icons/icon.png"} alt='no image' height={10} width={15}/>
               </div>
                 Transactions</a>
             </div>
-            <div className="">
+            <div className={styles.section}>
               <a href="#" className={linkClass("Services")} onClick={() => handleSelect("Services")}>
-              <div className='mr-2'>
+              <div className={styles.iconContainer}>
               <Image src={"/icons/galaxy.png"} alt='no image' height={10} width={15}/>
               </div>
                 Services</a>
             </div>
-            <div className="">
+            <div className={styles.section}>
               <a href="#" className={linkClass("Service_Account")} onClick={() => handleSelect("Service_Account")}>
-              <div className='mr-2'>
+              <div className={styles.iconContainer}>
               <Image src={"/icons/user-cog.png"} alt='no image' height={10} width={15}/>
               </div>
                 Service Account</a>
             </div>
-            <div className="">
+            <div className={styles.section}>
               <a href="#" className={linkClass("Settlements")} onClick={() => handleSelect("Settlements")}>
-              <div className='mr-2'>
+              <div className={styles.iconContainer}>
               <Image src={"/icons/scroll.png"} alt='no image' height={10} width={15}/>
               </div>
                 Settlements</a>
             </div>
-            <div className="">
+            <div className={styles.section}>
               <a href="#" className={linkClass("Reports")} onClick={() => handleSelect("Reports")}>
-              <div className='mr-2'>
+              <div className={styles.iconContainer}>
               <Image src={"/icons/chart-bar.png"} alt='no image' height={10} width={15}/>
               </div>
                 Reports</a>
@@ -183,23 +204,23 @@ export default function Sidebar ()
 
             <p className='text-custom px-4 mt-5 text-[#545F7D] font-medium'>SETTINGS</p>
 
-            <div className="">
+            <div className={styles.section}>
               <a href="#" className={linkClass("Preferences")} onClick={() => handleSelect("Preferences")}>
-              <div className='mr-2'>
+              <div className={styles.iconContainer}>
               <Image src={"/icons/sliders-h.png"} alt='no image' height={10} width={15}/>
               </div>
                 Preferences</a>
             </div>
-            <div className="">
+            <div className={styles.section}>
               <a href="#" className={linkClass("Fees_and_Pricing")} onClick={() => handleSelect("Fees_and_Pricing")}>
-              <div className='mr-2'>
+              <div className={styles.iconContainer}>
               <Image src={"/icons/badge-percent.png"} alt='no image' height={10} width={15}/>
               </div>
                 Fees and Pricing</a>
             </div>
-            <div className="">
+            <div className={styles.section}>
               <a href="#" className={linkClass("Audit_Logs")} onClick={() => handleSelect("Audit_Logs")}>
-              <div className='mr-2'>
+              <div className={styles.iconContainer}>
               <Image src={"/icons/clipboard-list.png"} alt='no image' height={10} width={15}/>
               </div>
                 Audit Logs</a>
