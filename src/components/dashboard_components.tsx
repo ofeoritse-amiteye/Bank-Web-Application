@@ -310,7 +310,7 @@ export const Main_content : React.FC<Main_contentProps> = ({}) =>
     useEffect(() => {
       async function fetchUsers() {
         try {
-          const response = await fetch('https://run.mocky.io/v3/c858cb6d-bbfe-492d-bcbd-2eeba92c6a78');
+          const response = await fetch('https://run.mocky.io/v3/7e20930c-6e39-46eb-9a16-ae899e208eb7');
           const data = await response.json();
           setUsers(data);
         } catch (error) {
