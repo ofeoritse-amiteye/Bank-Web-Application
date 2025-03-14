@@ -43,10 +43,9 @@ export default function Loginform() {
             password: 12345USER
           </div>
         )}
-        <h1 className="text-black text-3xl font-bold flex md:hidden mb-10">Walk <span className="text-red-400">Man</span></h1>
-        <h2 className="text-[40px] font-bold text-[#213F7D]">Welcome!</h2>
-        <p className="text-[#545F7D]">Enter details to Login</p>
-        <div className="mt-10 mb-5 w-full">
+        <h1 className="text-black text-6xl font-bold flex md:hidden mb-10 justify-center ">Walk <span className="text-red-400">Man</span></h1>
+        <p className="text-[#545F7D] flex justify-center ">Enter details to Login</p>
+        <div className="mt-3 mb-5 w-full">
           <input
             type="email"
             placeholder="Email"
