@@ -1,4 +1,4 @@
-## Lendsqr Frontend Engineering Test
+## Bank web application sytem
 A web application built with React and Tailwind CSS. This application includes a responsive login page, dashboard, sidebar, user cards with summary data, and a dynamic user table that allows for detail viewing and interaction.
 
 ## Table of Contents
