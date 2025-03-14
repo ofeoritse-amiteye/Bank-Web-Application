@@ -42,20 +42,20 @@ const Dashboard: React.FC = () => {
 
       <div className=' w-full shadow-sm flex sticky z-1000 top-0 bg-white h-24'>
 
-        <div className="custom:hidden p-4">
+        <div className="custom:hidden p-4 flex items-center">
           <button onClick={handleSidebarToggle} className="text-[#213F7D]">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-6 h-6 m" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
             </svg>
           </button>
          </div>
             <div className='flex justify-center items-center'>
                 <div className='hidden custom:block '>
-                <Image src={"/images/inside-out.png"} alt="no image" height={100} width={173.76}/>
+                <h1 className="text-black text-3xl font-bold flex ml-5">Walk <span className="text-red-400">Man</span></h1>
                 </div>
             </div>
             <div className='w-1/2 flex items-center'>
-            <Image src={"/images/inside-out.png"} alt='no image' height={30} width={150} className='md:hidden'/>
+              <h1 className="text-black text-3xl flex ml-5 font-bold md:hidden">Walk <span className="text-red-400">Man</span></h1>
             <input placeholder='search for anything' type="search" name="" id="" className='p-2 h-12 w-2/3 ml-16 rounded-l-lg border-2 border-gray-300 hidden md:block'/>
             <button type="submit" className='bg-[#39CDCC] h-12 w-14 rounded-r-lg items-center justify-center md:flex hidden'>
                 <Image src={"/icons/search.png"} alt='no image' height={25} width={25}/>

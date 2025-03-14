@@ -8,7 +8,7 @@ export default function Home() {
       <div className=" hidden h-screen w-1/2 md:block">
         <div className="h-1/3 w-full items-center flex">
           <div className="m-10">
-            <Image src={"/images/inside-out.png"} alt="no image" height={100} width={173.76}></Image>
+            <h1 className="text-black text-5xl font-bold">Walk <span className="text-red-400">Man</span></h1>
           </div>
         </div>
         <div className=" h-2/3 justify-center flex">

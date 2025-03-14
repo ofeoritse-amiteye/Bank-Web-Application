@@ -19,11 +19,11 @@ export default function Loginform() {
   }, []);
 
   const handleLogin = () => {
+    router.push("/dashboard"); 
     const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
 
     if (storedUser.email === email && storedUser.password === password) {
       alert("Login successful!");
-      router.push("/dashboard"); 
     } else {
       alert("Invalid credentials. Please try again.");
       setPassword("")
@@ -33,7 +33,7 @@ export default function Loginform() {
 
   setTimeout(() => {
     setShowPopup(false);
-  }, 5000);
+  }, 10000);
 
   return (
     <div className="h-screen w-full flex items-center justify-center">
