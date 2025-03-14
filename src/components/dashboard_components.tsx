@@ -2,6 +2,7 @@ import { useState,useEffect,  useRef} from "react";
 import Image from "next/image";
 import { Filterform } from "./forms";
 import styles from "./dashboard.module.scss";
+import Link from "next/link";
 
 
 
@@ -42,7 +43,9 @@ export default function Sidebar ()
               ></svg>
             </button>
           </div>
-
+            <div className="mb-3 flex justify-center lg:hidden">
+              <Link href="/" className="bg-red-400 p-3 items-center w-[50%] text-center font-bold text-white rounded-xl hover:bg-red-600"> LogOut</Link>
+            </div>
           <div className={styles.section}>
             <a href="#" className={styles.switchOrganization}>
               <div className={styles.iconContainer}>
@@ -223,7 +226,11 @@ export default function Sidebar ()
               <div className={styles.iconContainer}>
               <Image src={"/icons/clipboard-list.png"} alt='no image' height={10} width={15}/>
               </div>
-                Audit Logs</a>
+                Audit Logs
+                </a>
+            </div>
+            <div className="mb-10 justify-center mt-3 hidden lg:flex">
+              <Link href="/" className="bg-red-400 p-3 items-center w-[90%] text-center font-bold text-white rounded-xl hover:bg-red-600"> LogOut</Link>
             </div>
         </div>
     )
