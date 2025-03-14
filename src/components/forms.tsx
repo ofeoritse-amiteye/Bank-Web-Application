@@ -1,7 +1,6 @@
 "use client"
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 
 export default function Loginform() {
   const [email, setEmail] = useState("");
@@ -44,7 +43,7 @@ export default function Loginform() {
             password: 12345USER
           </div>
         )}
-                        <h1 className="text-black text-3xl font-bold flex md:hidden mb-10">Walk <span className="text-red-400">Man</span></h1>
+        <h1 className="text-black text-3xl font-bold flex md:hidden mb-10">Walk <span className="text-red-400">Man</span></h1>
         <h2 className="text-[40px] font-bold text-[#213F7D]">Welcome!</h2>
         <p className="text-[#545F7D]">Enter details to Login</p>
         <div className="mt-10 mb-5 w-full">
